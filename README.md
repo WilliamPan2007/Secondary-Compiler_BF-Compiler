@@ -1,4 +1,4 @@
-## BrainFuck Compile
+## BrainFuck Compiler
 *注意：请勿用于专业编辑*
 ***
 #### What's it?
