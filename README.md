@@ -5,7 +5,8 @@
 An easy compiler powered by C++ on Windows x64
 
 ***
-
+##### Updated 2021/1/27 添加了对Windows x86的支持，仍然是beta版本，未通过完整的兼容性测试，仅供参考
+***
 #### 一些注意事项
 
 本编译器的alpha版本目前支持最多1024个变量（数组大小1024），
