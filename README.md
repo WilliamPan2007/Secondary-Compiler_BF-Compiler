@@ -47,4 +47,4 @@ RAM: DDR4 8.00 GB
 ```
 ***
 
-BF Graph Compiler  Copyright (C) 2021  William Pan
+BF Graphical Compiler  Copyright (C) 2021  William Pan
