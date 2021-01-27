@@ -5,7 +5,7 @@
 An easy compiler powered by C++ on Windows x64
 
 ***
-##### Updated 2021/1/27 添加了对Windows x86的支持，仍然是beta版本，未通过完整的兼容性测试，仅供参考
+##### Update 2021/1/27 重要更新！完成了完整的图形界面桌面应用！！！
 ***
 #### 一些注意事项
 
@@ -46,3 +46,5 @@ CPU: Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
 RAM: DDR4 8.00 GB
 ```
 ***
+
+BF Graph Compiler  Copyright (C) 2021  William Pan
