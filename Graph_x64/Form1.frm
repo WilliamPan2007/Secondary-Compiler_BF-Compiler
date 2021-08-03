@@ -68,8 +68,22 @@ Private Sub Command1_Click()
 
 End Sub
 
+Private Sub Form_Load()
+    Open "C:\Users\user\Desktop\costomsave.bfs" For Input As #2
+        Line Input #2, PlaceToSaveFile
+    Close #2
+    
+    Open "C:\Users\user\Desktop\costomsets.bfs" For Input As #1
+        Line Input #1, AutosaveCostomSet
+    Close #1
+    
+    If AutosaveCostomSet = "AutoSave = 1" Then isAutoSave = True
+    If AutosaveCostomSet = "AutoSave = 0" Then isAutoSave = False
+    
+End Sub
+
 Private Sub open_Click()
-    Open "C:\BFFiles\" & fileplace.Text & ".bf" For Input As #1     '打开打开XXX路径的XXX文件（双引号里表示文件位置和文件名）
+    Open PlaceToSaveFile & fileplace.Text & ".bf" For Input As #1     '打开打开XXX路径的XXX文件（双引号里表示文件位置和文件名）
     Do While Not EOF(1)
         Line Input #1, s
         code.Text = s
@@ -85,12 +99,13 @@ Private Sub RUN_Click()
     Else
         fullpath = App.Path + "\" + "GC.exe"
     End If
-    Shell fullpath & " " & "C:\BFFiles\" & fileplace.Text & ".bf"
+    'code.Text = fullpath
+    Shell fullpath & " " & PlaceToSaveFile & fileplace.Text & ".bf"     'fullpath中GC.exe路径只有在生成主程序且在程序根目录下才有效
 End Sub
 
 Private Sub save_Click()
     Dim lj As String
-    lj = "C:\BFFiles\" & fileplace.Text & ".bf"
+    lj = PlaceToSaveFile & fileplace.Text & ".bf"
         Open lj For Output As #1
         Print #1, code.Text
         Close #1

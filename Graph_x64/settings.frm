@@ -9,6 +9,25 @@ Begin VB.Form settings
    ScaleHeight     =   3195
    ScaleWidth      =   4680
    StartUpPosition =   3  '窗口缺省
+   Begin VB.TextBox Text1 
+      BackColor       =   &H8000000F&
+      BorderStyle     =   0  'None
+      Height          =   270
+      Left            =   2880
+      Locked          =   -1  'True
+      TabIndex        =   4
+      Text            =   "输入文件保存路径"
+      Top             =   780
+      Width           =   1695
+   End
+   Begin VB.TextBox filelocation 
+      Height          =   270
+      Left            =   450
+      TabIndex        =   3
+      Text            =   "C:\Users\user\Desktop\"
+      Top             =   780
+      Width           =   2295
+   End
    Begin VB.TextBox copyright 
       BackColor       =   &H8000000F&
       BorderStyle     =   0  'None
@@ -29,16 +48,15 @@ Begin VB.Form settings
       TabIndex        =   1
       TabStop         =   0   'False
       Text            =   "单击运行后自动保存"
-      Top             =   630
+      Top             =   500
       Width           =   1800
    End
    Begin VB.CheckBox autosave 
-      Caption         =   "AutoSave"
-      Height          =   255
-      Left            =   360
+      Height          =   270
+      Left            =   450
       TabIndex        =   0
-      Top             =   600
-      Width           =   255
+      Top             =   470
+      Width           =   270
    End
 End
 Attribute VB_Name = "Settings"
@@ -47,15 +65,39 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub autosave_Click()
-    If autosave.Value = 1 Then isAutoSave = True
-    If autosave.Value = 0 Then isAutoSave = False
+    If autosave.Value = 1 Then
+        isAutoSave = True
+        Dim setas As String
+            setas = "C:\Users\user\Desktop\costomsets.bfs"
+            Open setas For Output As #2
+            Print #2, "AutoSave = 1"
+            Close #2
+    End If
+    If autosave.Value = 0 Then
+        isAutoSave = False
+        Dim setas2 As String
+            setas2 = "C:\Users\user\Desktop\costomsets.bfs"
+            Open setas2 For Output As #2
+            Print #2, "AutoSave = 0"
+            Close #2
+    End If
 End Sub
 
 Private Sub File1_Click()
 
 End Sub
 
+Private Sub filelocation_Change()
+    PlaceToSaveFile = filelocation.Text
+    Dim setplace As String
+            setplace = "C:\Users\user\Desktop\costomsave.bfs"
+            Open setplace For Output As #2
+            Print #2, filelocation.Text
+    Close #2
+End Sub
+
 Private Sub Form_Load()
-    If isAutoSave = True Then autosave.Value = 1
-    If isAutoSave = False Then autosave.Value = 0
+    filelocation.Text = PlaceToSaveFile
+    If isAutoSave = True Or AutosaveCostomSet = "AutoSave = 1" Then autosave.Value = 1
+    If isAutoSave = False Or AutosaveCostomSet = "AutoSave = 0" Then autosave.Value = 0
 End Sub
