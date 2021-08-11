@@ -6,7 +6,7 @@ int main(int argc, char const *argv[]){
 	string a;
 	a=argv[1];
 	/* code */
-	string b="Graph_Compiler.exe ";
+	string b="BFC.exe ";
 	string c=b+ a.c_str();
 //	cout<<b;
 	system(c.c_str());
