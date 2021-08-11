@@ -24,7 +24,7 @@ Begin VB.Form settings
       Height          =   270
       Left            =   450
       TabIndex        =   3
-      Text            =   "C:\Users\user\Desktop\"
+      Text            =   "C:\Users\2-20191242\Desktop\"
       Top             =   780
       Width           =   2295
    End
@@ -65,10 +65,12 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub autosave_Click()
+    Dim strusername As String
+        strusername = Environ("USERNAME")
     If autosave.Value = 1 Then
         isAutoSave = True
         Dim setas As String
-            setas = "C:\Users\user\Desktop\costomsets.bfs"
+            setas = "C:\Users\" & strusername & "\Desktop\costomsets.bfs"
             Open setas For Output As #2
             Print #2, "AutoSave = 1"
             Close #2
@@ -76,7 +78,7 @@ Private Sub autosave_Click()
     If autosave.Value = 0 Then
         isAutoSave = False
         Dim setas2 As String
-            setas2 = "C:\Users\user\Desktop\costomsets.bfs"
+            setas2 = "C:\Users\" & strusername & "\Desktop\costomsets.bfs"
             Open setas2 For Output As #2
             Print #2, "AutoSave = 0"
             Close #2
@@ -88,9 +90,11 @@ Private Sub File1_Click()
 End Sub
 
 Private Sub filelocation_Change()
+    Dim strusername As String
+        strusername = Environ("USERNAME")
     PlaceToSaveFile = filelocation.Text
     Dim setplace As String
-            setplace = "C:\Users\user\Desktop\costomsave.bfs"
+            setplace = "C:\Users\" & strusername & "\Desktop\costomsave.bfs"
             Open setplace For Output As #2
             Print #2, filelocation.Text
     Close #2

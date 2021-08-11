@@ -69,11 +69,13 @@ Private Sub Command1_Click()
 End Sub
 
 Private Sub Form_Load()
-    Open "C:\Users\user\Desktop\costomsave.bfs" For Input As #2
+    Dim strusername As String
+    strusername = Environ("USERNAME")
+    Open "C:\Users\" & strusername & "\Desktop\costomsave.bfs" For Input As #2
         Line Input #2, PlaceToSaveFile
     Close #2
     
-    Open "C:\Users\user\Desktop\costomsets.bfs" For Input As #1
+    Open "C:\Users\" & strusername & "\Desktop\costomsets.bfs" For Input As #1
         Line Input #1, AutosaveCostomSet
     Close #1
     
